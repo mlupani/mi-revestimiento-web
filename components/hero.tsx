@@ -21,7 +21,7 @@ export function Hero () {
         <div className='absolute inset-0 bg-linear-to-t from-ink/70 via-transparent to-ink/20' />
       </div>
 
-      <div className='relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 lg:justify-center lg:px-8 lg:pb-24 lg:pt-20'>
+      <div className='relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 pb-36 pt-8 sm:px-6 sm:pb-24 lg:px-8 lg:pb-24 lg:pt-20'>
         <p className='animate-fade-up font-mono text-[11px] uppercase tracking-[0.28em] text-gold'>
           Showroom en {site.city}
         </p>

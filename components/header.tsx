@@ -19,53 +19,55 @@ export function Header () {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className='sticky top-0 z-40 border-b border-sand/70 bg-cream/90 backdrop-blur-md'>
-      <div className='mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8'>
-        <Logo size='sm' />
+    <>
+      <header className='sticky top-0 z-40 border-b border-sand/70 bg-cream/90 backdrop-blur-md'>
+        <div className='mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8'>
+          <Logo size='sm' />
 
-        <nav className='hidden items-center gap-8 lg:flex' aria-label='Principal'>
-          {nav.map((item) => (
+          <nav className='hidden items-center gap-8 lg:flex' aria-label='Principal'>
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className='font-mono text-[11px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:text-burgundy'
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className='flex items-center gap-3'>
             <a
-              key={item.href}
-              href={item.href}
-              className='font-mono text-[11px] uppercase tracking-[0.18em] text-ink/70 transition-colors hover:text-burgundy'
+              href={whatsappLink(site.whatsappMessages.general)}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='hidden items-center bg-burgundy px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-cream transition-colors hover:bg-burgundy-deep sm:inline-flex'
             >
-              {item.label}
+              Consultar por WhatsApp
             </a>
-          ))}
-        </nav>
-
-        <div className='flex items-center gap-3'>
-          <a
-            href={whatsappLink(site.whatsappMessages.general)}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='hidden items-center bg-burgundy px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-cream transition-colors hover:bg-burgundy-deep sm:inline-flex'
-          >
-            Consultar por WhatsApp
-          </a>
-          <button
-            type='button'
-            className='inline-flex h-10 w-10 items-center justify-center text-burgundy lg:hidden'
-            onClick={() => setOpen(true)}
-            aria-label='Abrir menú'
-          >
-            <Menu size={22} strokeWidth={1.5} />
-          </button>
+            <button
+              type='button'
+              className='inline-flex h-10 w-10 items-center justify-center text-burgundy lg:hidden'
+              onClick={() => setOpen(true)}
+              aria-label='Abrir menú'
+            >
+              <Menu size={22} strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <AnimatePresence>
         {open
           ? (
             <motion.div
               key='menu'
-              className='fixed inset-0 z-50 bg-cream lg:hidden'
+              className='fixed inset-0 z-[80] flex min-h-dvh flex-col overflow-y-auto bg-cream lg:hidden'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className='flex h-[4.5rem] items-center justify-between px-4'>
+              <div className='flex h-[4.5rem] shrink-0 items-center justify-between border-b border-sand bg-cream px-4'>
                 <Logo size='sm' />
                 <button
                   type='button'
@@ -76,7 +78,7 @@ export function Header () {
                   <X size={22} strokeWidth={1.5} />
                 </button>
               </div>
-              <nav className='flex flex-col gap-1 px-6 pt-8' aria-label='Móvil'>
+              <nav className='flex flex-1 flex-col items-stretch bg-cream px-6 py-6' aria-label='Móvil'>
                 {nav.map((item, index) => (
                   <motion.a
                     key={item.href}
@@ -85,7 +87,7 @@ export function Header () {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 * index, duration: 0.4 }}
-                    className='border-b border-sand py-4 font-display text-4xl text-burgundy'
+                    className='border-b border-sand py-4 text-left font-display text-4xl text-burgundy'
                   >
                     {item.label}
                   </motion.a>
@@ -103,6 +105,6 @@ export function Header () {
             )
           : null}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

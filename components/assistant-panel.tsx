@@ -62,7 +62,7 @@ export function AssistantPanel () {
             <motion.button
               type='button'
               aria-label='Cerrar asistente'
-              className='fixed inset-0 z-50 bg-ink/45'
+              className='fixed inset-0 z-[65] bg-ink/45'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -146,7 +146,7 @@ function AssistantConversation ({ onClose }: AssistantConversationProps) {
     <motion.aside
       role='dialog'
       aria-labelledby='assistant-title'
-      className='fixed inset-x-0 bottom-0 z-50 flex h-[min(92vh,760px)] flex-col border-t border-gold/40 bg-cream md:inset-y-0 md:left-auto md:right-0 md:h-full md:w-[440px] md:border-l md:border-t-0'
+      className='fixed inset-x-0 bottom-0 z-[70] flex h-[min(82dvh,720px)] flex-col border-t border-gold/40 bg-cream pb-[env(safe-area-inset-bottom)] md:inset-y-0 md:left-auto md:right-0 md:h-full md:w-[440px] md:border-l md:border-t-0 md:pb-0'
       initial={{ y: '100%' }}
       animate={{ y: 0 }}
       exit={{ y: '100%' }}
@@ -165,7 +165,7 @@ function AssistantConversation ({ onClose }: AssistantConversationProps) {
         <button
           type='button'
           onClick={onClose}
-          className='flex h-9 w-9 items-center justify-center text-burgundy'
+          className='flex h-11 w-11 shrink-0 items-center justify-center border border-sand bg-paper text-burgundy'
           aria-label='Cerrar'
         >
           <X size={18} strokeWidth={1.5} />
