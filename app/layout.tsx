@@ -10,6 +10,7 @@ import { Footer } from '@/components/footer';
 import { AssistantShell } from '@/components/assistant-shell';
 import { FloatingActions } from '@/components/floating-actions';
 import { site } from '@/lib/site';
+import { getSiteUrl } from '@/lib/site-url';
 import { localBusinessJsonLd } from '@/lib/json-ld';
 import './globals.css';
 
@@ -40,8 +41,10 @@ const ibmPlexMono = IbmPlexMono({
   display: 'swap',
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.siteUrl),
+  metadataBase: new URL(siteUrl),
   title: {
     default: site.seo.title,
     template: `%s | ${site.name}`,
@@ -63,15 +66,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: site.siteUrl,
+    url: siteUrl,
     siteName: site.name,
     title: site.seo.title,
     description: site.seo.description,
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
+        alt: 'Mi Revestimiento. Cerámicas, porcelanatos y revestimientos en Gerli.',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: site.seo.title,
     description: site.seo.description,
+    images: ['/og.jpg'],
   },
   other: {
     'geo.region': 'AR-B',

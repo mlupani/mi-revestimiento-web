@@ -1,12 +1,15 @@
 import { site } from '@/lib/site';
+import { getSiteUrl } from '@/lib/site-url';
+
+const siteUrl = getSiteUrl();
 
 export const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'HomeAndConstructionBusiness',
   name: site.name,
   description: site.seo.description,
-  url: site.siteUrl,
-  image: `${site.siteUrl}/icon.png`,
+  url: siteUrl,
+  image: `${siteUrl}/og.jpg`,
   telephone: `+${site.whatsappNumber}`,
   slogan: site.tagline,
   address: {

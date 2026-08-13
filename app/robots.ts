@@ -1,12 +1,14 @@
-import { site } from '@/lib/site';
+import { getSiteUrl } from '@/lib/site-url';
 
 export default function robots () {
+  const siteUrl = getSiteUrl();
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${site.siteUrl}/sitemap.xml`,
-    host: site.siteUrl,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

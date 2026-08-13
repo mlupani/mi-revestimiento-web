@@ -17,7 +17,6 @@ export const site = {
   whatsappNumber: '5491160975783',
   whatsappDisplay: '+54 9 11 6097-5783',
   mercadoLibreUrl: 'https://listado.mercadolibre.com.ar/_CustId_181060154',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mirevestimiento.com.ar',
   seo: {
     title: 'Mi Revestimiento | Cerámicas, porcelanatos y revestimientos en Gerli',
     description:
